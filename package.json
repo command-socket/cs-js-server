@@ -1,7 +1,10 @@
 {
-	"name": "<name>",
-	"version": "<version>",
-	"description": "<desc>",
+	"name": "@command-socket/server",
+	"version": "0.1.0",
+	"description": "A NodeJS-based implementation of a CommandSocket server.",
+	"publishConfig": {
+		"access": "public"
+	},
 	"main": "js/main",
 	"types": ".d.ts/main",
 	"scripts": {
@@ -10,25 +13,39 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/<github_org>/<base_name>.git"
+		"url": "git+https://github.com/command-socket/cs-js-server"
 	},
-	"keywords": [],
+	"keywords": [
+		"websocket",
+		"command",
+		"server",
+		"nodejs"
+	],
 	"author": "Trevor Sears <trevorsears.main@gmail.com> (http://trevorsears.io/)",
 	"license": "GPL-3.0-or-later",
 	"bugs": {
-		"url": "https://github.com/<github_org>/<base_name>/issues"
+		"url": "https://github.com/command-socket/cs-js-server/issues"
 	},
-	"homepage": "https://github.com/<github_org>/<base_name>#readme",
+	"homepage": "https://github.com/command-socket/cs-js-server#readme",
 	"devDependencies": {
-		"typescript": "latest",
-		"tslint": "latest",
 		"@types/jest": "latest",
+		"@types/ws": "latest",
 		"del": "latest",
 		"gulp": "latest",
 		"gulp-sourcemaps": "latest",
 		"gulp-typescript": "latest",
 		"gulp-uglify-es": "latest",
+		"gulp-chug": "latest",
 		"jest": "latest",
-		"ts-jest": "latest"
+		"ts-jest": "latest",
+		"tslint": "latest",
+		"typescript": "latest",
+		"@t99/delicate": "latest"
+	},
+	"dependencies": {
+		"@command-socket/core": "^0.1.0",
+		"@command-socket/node-client": "^0.1.0",
+		"avents": "^0.1.0",
+		"ws": "^7.2.0"
 	}
 }
