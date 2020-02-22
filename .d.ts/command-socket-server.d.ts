@@ -5,7 +5,7 @@ export declare class CommandSocketServer<LCS extends CommandSetStructure = any, 
     private connectionMap;
     private internalServer;
     private readonly events;
-    constructor(port: number, commandRegistry?: CommandRegistry<LCS>);
+    constructor(port: number, commandRegistry?: CommandRegistry<LCS>, defaultMetadata?: Partial<M>);
     hasConnectionForID(id: string): boolean;
     getConnectionForID(id: string): CommandSocket<LCS, RCS, M> | undefined;
     getCommandRegistry(): any;

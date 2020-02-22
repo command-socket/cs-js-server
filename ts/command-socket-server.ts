@@ -41,8 +41,9 @@ export class CommandSocketServer<
 	 *
 	 * @param port The port on which to start the CommandSocketServer.
 	 * @param commandRegistry The CommandRegistry to use for each spawned serverside CommandSocket.
+	 * @param defaultMetadata The default values to set for each spawned serverside CommandSocket.
 	 */
-	public constructor(port: number, commandRegistry?: CommandRegistry<LCS>) {
+	public constructor(port: number, commandRegistry?: CommandRegistry<LCS>, defaultMetadata: Partial<M> = {}) {
 	
 		this.connectionMap = new Map<string, CommandSocket<LCS, RCS, M>>();
 		
@@ -52,7 +53,7 @@ export class CommandSocketServer<
 		
 		this.internalServer.on("connection", async (websocket: WebSocket): Promise<void> => {
 			
-			let connection: CommandSocket<LCS, RCS, M> = await CommandSocket.create(websocket, commandRegistry);
+			let connection: CommandSocket<LCS, RCS, M> = await CommandSocket.create(websocket, commandRegistry, defaultMetadata);
 			
 			this.connectionMap.set(connection.getID(), connection);
 			
