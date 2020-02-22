@@ -28,7 +28,7 @@ const main: () => Promise<void> = async (): Promise<void> => {
 	
 	let myCommandRegistry: CommandRegistry<LocalCommandSet> = new CommandRegistry<LocalCommandSet>();
 	
-	myCommandRegistry.addInlineCommand("sum", async (params: number[]): Promise<number> => {
+	myCommandRegistry.addCommand("sum", async (params: number[]): Promise<number> => {
 		
 		let result: number = 0;
 		
