@@ -4,6 +4,7 @@
  *	Project: @command-socket/server
  */
 
+import { CommandRegistry, CommandSetStructure } from "@command-socket/core";
 import * as delicate from "@t99/delicate";
 import { CommandSocketServer } from "../../command-socket-server";
 
@@ -13,9 +14,35 @@ const main: () => Promise<void> = async (): Promise<void> => {
 	
 	console.log("Starting server on port " + PORT + "...\n");
 	
-	let server: CommandSocketServer = new CommandSocketServer(PORT);
+	interface LocalCommandSet extends CommandSetStructure {
+		
+		sum: {
+			
+			name: "sum",
+			parameter: number[],
+			return: number
+			
+		};
+		
+	}
 	
-	delicate.prompt(() => {
+	let myCommandRegistry: CommandRegistry<LocalCommandSet> = new CommandRegistry<LocalCommandSet>();
+	
+	myCommandRegistry.addInlineCommand("sum", async (params: number[]): Promise<number> => {
+		
+		let result: number = 0;
+		
+		for (let value of params) result += value;
+		
+		return result;
+		
+	});
+	
+	let server: CommandSocketServer<LocalCommandSet> = new CommandSocketServer(PORT, myCommandRegistry);
+	
+	console.log("Server running...");
+	
+	delicate.prompt((): void => {
 		
 		console.log("\nClosing server.");
 		server.close();
