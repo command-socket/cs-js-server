@@ -1,6 +1,6 @@
 {
 	"name": "@command-socket/server",
-	"version": "0.4.0",
+	"version": "0.4.1",
 	"description": "A NodeJS-based implementation of a CommandSocket server.",
 	"publishConfig": {
 		"access": "public"
@@ -43,8 +43,8 @@
 		"@t99/delicate": "latest"
 	},
 	"dependencies": {
-		"@command-socket/core": "^0.4.0",
-		"@command-socket/node-client": "^0.4.0",
+		"@command-socket/core": "0.4.1",
+		"@command-socket/node-client": "0.4.1",
 		"avents": "^0.1.0",
 		"ws": "^7.2.0"
 	}
